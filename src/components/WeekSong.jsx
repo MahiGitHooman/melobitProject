@@ -1,8 +1,7 @@
 import { Card, Col } from "react-bootstrap";
 import ReactAudioPlayer from "react-audio-player";
-const TopDaySong = ({ song }) => {
+const WeekSong = ({ song }) => {
   const { title, artists, image, audio, downloadCount } = song; // distructuring the data from prop
-
   return (
     <Col>
       <Card className="">
@@ -28,4 +27,4 @@ const TopDaySong = ({ song }) => {
   );
 };
 
-export default TopDaySong;
+export default WeekSong;

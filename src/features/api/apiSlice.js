@@ -13,6 +13,9 @@ export const apiSlice = createApi({
     getTodayTrendingSongs: builder.query({
       query: () => "/song/top/day/0/100",
     }),
+    getWeekTrendingSongs: builder.query({
+      query: () => "/song/top/week/0/100",
+    }),
   }),
 });
 
@@ -20,4 +23,5 @@ export const {
   useGetNewestSongsQuery,
   useGetTrendingArtistQuery,
   useGetTodayTrendingSongsQuery,
+  useGetWeekTrendingSongsQuery,
 } = apiSlice;
