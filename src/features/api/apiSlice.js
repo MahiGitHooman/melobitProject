@@ -7,7 +7,10 @@ export const apiSlice = createApi({
     getNewestSongs: builder.query({
       query: () => "/song/new/0/10",
     }),
+    getTrendingArtist: builder.query({
+      query: () => "/artist/trending/0/4",
+    }),
   }),
 });
 
-export const { useGetNewestSongsQuery } = apiSlice;
+export const { useGetNewestSongsQuery, useGetTrendingArtistQuery } = apiSlice;

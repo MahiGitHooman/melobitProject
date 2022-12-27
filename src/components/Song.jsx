@@ -1,8 +1,8 @@
 import { Card, Col } from "react-bootstrap";
 import ReactAudioPlayer from "react-audio-player";
 const Song = ({ song }) => {
-  const { title, artists, image, audio } = song;
-  console.log(song);
+  const { title, artists, image, audio } = song; // distructuring the data from prop
+
   return (
     <Col>
       <Card>
