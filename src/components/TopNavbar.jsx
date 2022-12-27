@@ -1,15 +1,28 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { NavLink, Link } from "react-router-dom";
 
 function TopNavbar() {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="lg" className="top-navbar">
       <Container>
-        <Navbar.Brand href="#home">Melobit App</Navbar.Brand>
+        <Navbar.Brand>
+          <Link to="/" className="text-decoration-none text-dark">
+            Melobit App
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+            <Nav.Link as="li">
+              <NavLink to="/" className="text-decoration-none text-dark">
+                Home
+              </NavLink>
+            </Nav.Link>
+            <Nav.Link as="li">
+              <NavLink to="/home" className="text-decoration-none text-dark">
+                Home
+              </NavLink>
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
