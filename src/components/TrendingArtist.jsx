@@ -2,7 +2,6 @@ import { Image } from "react-bootstrap";
 
 const TrendingArtist = ({ artist }) => {
   const { sumSongsDownloadsCount, fullName, image } = artist;
-  console.log(artist);
   return (
     <div className="d-flex flex-column justify-content-center">
       <Image src={image?.cover_small?.url} roundedCircle={true} />

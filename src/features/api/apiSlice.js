@@ -10,7 +10,14 @@ export const apiSlice = createApi({
     getTrendingArtist: builder.query({
       query: () => "/artist/trending/0/4",
     }),
+    getTodayTrendingSongs: builder.query({
+      query: () => "/song/top/day/0/100",
+    }),
   }),
 });
 
-export const { useGetNewestSongsQuery, useGetTrendingArtistQuery } = apiSlice;
+export const {
+  useGetNewestSongsQuery,
+  useGetTrendingArtistQuery,
+  useGetTodayTrendingSongsQuery,
+} = apiSlice;
