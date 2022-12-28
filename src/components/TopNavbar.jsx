@@ -1,9 +1,10 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 
 function TopNavbar() {
   return (
-    <Navbar bg="light" expand="lg" className="top-navbar">
+    <Navbar sticky="top" bg="light" expand="lg" className="top-navbar">
       <Container>
         <Navbar.Brand>
           <Link to="/" className="text-decoration-none text-dark">
@@ -18,9 +19,9 @@ function TopNavbar() {
                 Home
               </NavLink>
             </Nav.Link>
-            <Nav.Link as="li">
-              <NavLink to="/home" className="text-decoration-none text-dark">
-                Home
+            <Nav.Link as="li" className="ms-5">
+              <NavLink to="/search" className="text-decoration-none text-dark">
+                <FaSearch /> SearchSong
               </NavLink>
             </Nav.Link>
           </Nav>
