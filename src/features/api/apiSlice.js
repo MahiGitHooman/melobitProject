@@ -18,6 +18,7 @@ export const apiSlice = createApi({
     }),
     getSearchedSongs: builder.query({
       query: (searchText) => `/search/query/${searchText}/0/50`,
+      keepUnusedDataFor: 600,
     }),
     getSongDetails: builder.query({
       query: (id) => `/song/${id}`,

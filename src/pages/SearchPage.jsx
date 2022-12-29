@@ -2,7 +2,10 @@ import { Button, Container, Form, Row } from "react-bootstrap";
 import { useState } from "react";
 import { useGetSearchedSongsQuery } from "../features/api/apiSlice";
 import SearchItem from "../components/SearchItem";
-
+import Loading from "../components/Loading";
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import Player from "../components/Player";
 const SearchPage = () => {
   const [searchText, setSearchText] = useState("");
   // The skip state is used to skip for the first time when component is load
@@ -26,14 +29,16 @@ const SearchPage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (!searchText) {
-      console.log("Please enter sth");
+      toast.error("Please write something in input");
       return;
     }
     setSkip(false);
   };
 
+  const { url } = useSelector((state) => state.player);
   return (
-    <>
+    <div className="search-page">
+      {url && <Player />}
       <Container>
         <Form className="d-flex mt-3" onSubmit={onSubmit}>
           <Form.Control
@@ -47,15 +52,27 @@ const SearchPage = () => {
           </Button>
         </Form>
 
-        <div className="my-5">
-          <Row xs={1} sm={2} md={3} className="g-4">
-            {songs?.results?.map((song) => {
-              return <SearchItem key={song.id} item={song} />;
-            })}
-          </Row>
-        </div>
+        {isLoading ? (
+          <Loading />
+        ) : isError ? (
+          toast.error("something went wrong", error)
+        ) : (
+          <div className="my-5">
+            {!isSuccess ? (
+              <p className="d-flex align-items-center justify-content-center text-muted">
+                Search songs, albums and artists
+              </p>
+            ) : (
+              <Row xs={1} sm={2} md={3} className="g-4">
+                {songs?.results?.map((song, _) => {
+                  return <SearchItem key={_} item={song} />;
+                })}
+              </Row>
+            )}
+          </div>
+        )}
       </Container>
-    </>
+    </div>
   );
 };
 

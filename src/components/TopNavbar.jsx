@@ -19,7 +19,7 @@ function TopNavbar() {
                 Home
               </NavLink>
             </Nav.Link>
-            <Nav.Link as="li" className="ms-5">
+            <Nav.Link as="li" className="ms-0 ms-lg-5">
               <NavLink to="/search" className="text-decoration-none text-dark">
                 <FaSearch /> SearchSong
               </NavLink>

@@ -6,7 +6,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -16,4 +15,68 @@ code {
 .top-navbar .navbar-nav .nav-link a.active{
   color: #0d6efd !important;
   font-weight: bold;
+}
+
+
+.player{
+  margin: 0 auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1213;
+  width: 100%;
+  padding: 30px 40px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #f0f1f1;
+}
+
+.player .close-icon-container{
+  cursor: pointer;
+  position: absolute;
+  top: 10px !important;
+  right: -96% !important;
+}
+
+@media (max-width:940px){
+  .player .close-icon-container{
+    right: -90% !important;
+  }
+}
+
+
+
+.play-icon-container::after{
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.play-icon-container .play-icon{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  cursor: pointer;
+  display: none;
+}
+
+.play-icon-container:hover::after{
+  background-color: rgba(52, 104, 247, 0.1);
+}
+
+.play-icon-container:hover .play-icon{
+  display: block;
+}
+
+
+.home-page,
+.song-details{
+  min-height: 80.8vh;
+}
+
+.search-page{
+  min-height: 78.3vh;
 }

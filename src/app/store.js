@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "../features/api/apiSlice";
-import counterReducer from "../features/counter/counterSlice";
+import PlayerReducer from "../features/player/PlayerSlice";
 
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
-    counter: counterReducer,
+    player: PlayerReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiSlice.middleware),
+    getDefaultMiddleware({ serializableCheck: false }).concat(
+      apiSlice.middleware
+    ),
 });

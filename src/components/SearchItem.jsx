@@ -1,29 +1,35 @@
 import { Card, Col, Image } from "react-bootstrap";
-import ReactAudioPlayer from "react-audio-player";
+import { Link } from "react-router-dom";
+import MusicImage from "./MusicImage";
 const SearchItem = ({ item }) => {
-  console.log(item);
+  const data = {
+    songId: item?.song?.id,
+    url: item?.song?.audio?.high?.url,
+    img: item?.song?.image?.cover_small?.url,
+    artistName: item?.song?.artists[0]?.fullName,
+    songTitle: item?.song?.title,
+  };
+
   if (item?.type === "song") {
     return (
       <Col>
         <Card className="">
-          <Card.Img variant="top" src={item?.song?.image?.cover_small?.url} />
+          <MusicImage data={data} id={item?.song?.id} />
           <Card.Body>
-            <Card.Title style={{ fontSize: "17px" }}>
-              {item?.song?.title}
-            </Card.Title>
-            <Card.Text className="text-muted d-flex justify-content-between">
-              <span>{item?.song?.artists[0]?.fullName}</span>
-              <span>
-                {item?.song?.downloadCount} <small>downloaded</small>
-              </span>
-            </Card.Text>
-
-            <ReactAudioPlayer
-              src={item?.song?.audio?.high?.url}
-              autoPlay={false}
-              controls
-              style={{ width: "100%" }}
-            />
+            <Link
+              to={`/search/${item?.song?.id}`}
+              className="text-decoration-none text-dark"
+            >
+              <Card.Title style={{ fontSize: "17px" }}>
+                {item?.song?.title}
+              </Card.Title>
+              <Card.Text className="text-muted d-flex justify-content-between">
+                <span>{item?.song?.artists[0]?.fullName}</span>
+                <span>
+                  {item?.song?.downloadCount} <small>downloaded</small>
+                </span>
+              </Card.Text>
+            </Link>
           </Card.Body>
         </Card>
       </Col>
